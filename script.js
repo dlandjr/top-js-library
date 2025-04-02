@@ -9,6 +9,10 @@ function Book(title, author, year, pages, isRead) {
     this.isRead = isRead;
 }
 
+Book.prototype.toggleRead = function() {
+    this.isRead = !this.isRead;
+}
+
 function addBooktoLibrary(title, author, year, pages, isRead) {
     const newBook = new Book(title, author, year, pages, isRead);
     myLibrary.push(newBook);
@@ -21,14 +25,27 @@ function displayBooks() {
     myLibrary.forEach(book => {
         const bookCard = document.createElement("div");
         bookCard.classList.add("book-card");
+        bookCard.setAttribute("data-id", book.id);
+
         bookCard.innerHTML = `
             <h3>${book.title}</h3>
             <p>Author: ${book.author}</p>
             <p>Published in: ${book.year}</p>
             <p>Pages: ${book.pages}</p>
-            <p>Read: ${book.isRead ? "Yes" : "No"}</p>
-            <button onclick="removeBook('${book.id}')">Remove</button>
+            <p>Read: <span>${book.isRead ? "Yes" : "No"}</span></p>
+            <button class="toggle-read">Toggle Read</button>
+            <button onclick="removeBook">Remove</button>
         `;
+
+        bookCard.querySelector(".toggle-read").addEventListener("click", () => {
+            book.toggleRead();
+            displayBooks();
+        });
+
+        bookCard.querySelector(".remove-book").addEventListener("click", () => {
+            removeBook(book.id);
+        });
+
         libraryContainer.appendChild(bookCard);
     });
 }
