@@ -34,7 +34,7 @@ function displayBooks() {
             <p>Pages: ${book.pages}</p>
             <p>Read: <span>${book.isRead ? "Yes" : "No"}</span></p>
             <button class="toggle-read">Toggle Read</button>
-            <button onclick="removeBook">Remove</button>
+            <button class="removeBook">Remove</button>
         `;
 
         bookCard.querySelector(".toggle-read").addEventListener("click", () => {
