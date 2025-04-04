@@ -13,7 +13,7 @@ Book.prototype.toggleRead = function() {
     this.isRead = !this.isRead;
 }
 
-function addBooktoLibrary(title, author, year, pages, isRead) {
+function addBookToLibrary(title, author, year, pages, isRead) {
     const newBook = new Book(title, author, year, pages, isRead);
     myLibrary.push(newBook);
 }
@@ -95,11 +95,11 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-addBooktoLibrary("East of Eden", "John Steinbeck", 1952, 608, true);
-addBooktoLibrary("Lonesome Dove", "Larry McMurtry", 1985, 864, true);
-addBooktoLibrary("The Brothers K", "David James Duncan", 1992, 645, true);
-addBooktoLibrary("Barbarian Days: A Surfing Life", "William Finnegan", 2015, 447, true);
-addBooktoLibrary("The Boys in the Boat: Nine Americans and Their Epic Quest for Gold at the 1936 Berlin Olympics", "Daniel James Brown", 2013, 404, false);
-addBooktoLibrary("The Pragmatic Programmer: From Journeyman to Master", "Dave Thomas", 1999, 321, false);
+addBookToLibrary("East of Eden", "John Steinbeck", 1952, 608, true);
+addBookToLibrary("Lonesome Dove", "Larry McMurtry", 1985, 864, true);
+addBookToLibrary("The Brothers K", "David James Duncan", 1992, 645, true);
+addBookToLibrary("Barbarian Days: A Surfing Life", "William Finnegan", 2015, 447, true);
+addBookToLibrary("The Boys in the Boat: Nine Americans and Their Epic Quest for Gold at the 1936 Berlin Olympics", "Daniel James Brown", 2013, 404, false);
+addBookToLibrary("The Pragmatic Programmer: From Journeyman to Master", "Dave Thomas", 1999, 321, false);
 
 displayBooks();
