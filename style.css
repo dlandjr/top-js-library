@@ -56,17 +56,27 @@ header button:hover {
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 15px;
     padding: 20px;
+    width: 80%;  /* Adjusted to give more space */
+    margin: 20px auto; /* Center the container with spacing */
 }
 
 /* Book Card */
 .book-card {
     background: white;
     padding: 15px;
+    padding-bottom: 40px;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    position: relative; /* For positioning the remove icon */
+}
+
+.book-card:hover {
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);  /* Prominent shadow on hover */
+    transform: scale(1.02); /* Slight zoom effect */
 }
 
 .book-card h3 {
@@ -78,35 +88,38 @@ header button:hover {
     margin: 5px 0;
 }
 
-/* Corrected class name from .removeBook to .remove-book */
 button.toggle-read {
     background-color: #f39c12;
     color: white;
     border: none;
-    padding: 5px 10px;
+    padding: 6px 12px;
     margin-top: 10px;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 20px; /* More rounded button */
     font-size: 0.9rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
 button.toggle-read:hover {
     background-color: #e67e22;
+    transform: scale(1.05); /* Slight grow effect on hover */
 }
 
-button.remove-book {
-    background-color: #e74c3c;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    margin-top: 5px;
+/* Remove Book X */
+.remove-book {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    color: #aaa;
     cursor: pointer;
-    border-radius: 5px;
-    font-size: 0.9rem;
 }
 
-button.remove-book:hover {
-    background-color: #c0392b;
+.remove-book:hover {
+    color: #e74c3c;
 }
 
 /* Modal */
@@ -125,8 +138,8 @@ button.remove-book:hover {
 
 .modal-content {
     background: white;
-    padding: 20px;
-    border-radius: 10px;
+    padding: 25px; /* Increased padding */
+    border-radius: 15px; /* More rounded modal */
     width: 300px;
     position: relative;
     text-align: left;
@@ -179,4 +192,81 @@ form button[type="submit"] {
 
 form button[type="submit"]:hover {
     background-color: #1e8449;
+}
+
+/* Read Status */
+.read-status {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.read-label {
+    color: #e74c3c; /* Default: Red for Unread */
+    transition: color 0.3s ease;
+}
+
+/* Toggle Switch Container */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 34px;
+    height: 20px;
+}
+
+/* Hide the default checkbox */
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* Slider (Toggle Button) */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #e74c3c; /* Default: Red for Unread */
+    transition: 0.3s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 14px;
+    width: 14px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: 0.3s;
+    border-radius: 50%;
+}
+
+/* When checked, change background to green */
+input:checked + .slider {
+    background-color: #2ecc71;
+}
+
+/* Move the toggle circle when checked */
+input:checked + .slider:before {
+    transform: translateX(14px);
+}
+
+/* Responsive Design */
+@media screen and (max-width: 600px) {
+    .library-container {
+        width: 100%; /* Full width on small screens */
+    }
+    .book-card h3 {
+        font-size: 1.1rem; /* Smaller title font size */
+    }
+    .toggle-read {
+        font-size: 0.75rem; /* Smaller buttons on mobile */
+    }
 }

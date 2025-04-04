@@ -27,23 +27,35 @@ function displayBooks() {
         bookCard.classList.add("book-card");
         bookCard.setAttribute("data-id", book.id);
 
+        const readLabelText = book.isRead ? "Read" : "Unread";
+        const readLabelColor = book.isRead ? "#2ecc71" : "#e74c3c"; // Green for Read, Red for Unread
+
         bookCard.innerHTML = `
+            <span class="remove-book" aria-label="Remove Book">×</span>
             <h3>${book.title}</h3>
             <p>Author: ${book.author}</p>
             <p>Published in: ${book.year}</p>
             <p>Pages: ${book.pages}</p>
-            <p>Read: <span>${book.isRead ? "Yes" : "No"}</span></p>
-            <button class="toggle-read">Toggle Read</button>
-            <button class="remove-book">Remove</button>
+            <div class="read-status">
+                <label class="switch">
+                    <input type="checkbox" class="toggle-read" aria-label="Toggle Read Status" ${book.isRead ? "checked" : ""}>
+                    <span class="slider round"></span>
+                </label>
+                <span class="read-label" style="color: ${readLabelColor}">${readLabelText}</span>
+            </div>
         `;
 
-        bookCard.querySelector(".toggle-read").addEventListener("click", () => {
-            book.toggleRead();
-            displayBooks();
+        const removeButton = bookCard.querySelector(".remove-book");
+        removeButton.addEventListener("click", () => {
+            removeBook(book.id);
         });
 
-        bookCard.querySelector(".remove-book").addEventListener("click", () => {
-            removeBook(book.id);
+        const toggleReadCheckbox = bookCard.querySelector(".toggle-read");
+        toggleReadCheckbox.addEventListener("change", (event) => {
+            book.toggleRead();
+            const readLabel = bookCard.querySelector(".read-label");
+            readLabel.textContent = book.isRead ? "Read" : "Unread";
+            readLabel.style.color = book.isRead ? "#2ecc71" : "#e74c3c"; // Update color based on the read status
         });
 
         libraryContainer.appendChild(bookCard);
@@ -87,7 +99,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const pages = document.getElementById("pages").value;
         const isRead = document.getElementById("isRead").checked;
 
-        addBooktoLibrary(title, author, year, pages, isRead);
+        addBookToLibrary(title, author, year, pages, isRead);
         displayBooks();
 
         bookForm.reset();
