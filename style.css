@@ -1,20 +1,147 @@
+/* Reset some default styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f8f9fa;
+    color: #333;
+    padding: 1rem;
+}
+
+/* --- Header Styling --- */
+header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #343a40;
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+}
+
+header h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    flex: 1 0 100%;
+}
+
+header input,
+header select,
+header button {
+    margin: 0.25rem;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 4px;
+}
+
+#searchBar {
+    flex: 1 1 200px;
+}
+
+#filter {
+    flex: 0 0 120px;
+}
+
+#newBookBtn {
+    background-color: #28a745;
+    color: white;
+    cursor: pointer;
+}
+
+#newBookBtn:hover {
+    background-color: #218838;
+}
+
+/* --- Book Cards Layout --- */
+.library-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+/* --- Individual Book Card --- */
+.book-card {
+    background-color: white;
+    padding: 1rem;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.book-card h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+    color: #007bff;
+}
+
+.book-card p {
+    margin-bottom: 0.25rem;
+}
+
+.book-card button {
+    margin-top: 0.5rem;
+    margin-right: 0.5rem;
+    padding: 0.4rem 0.6rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.toggle-read {
+    background-color: #ffc107;
+    color: black;
+}
+
+.remove-book {
+    background-color: #dc3545;
+    color: white;
+}
+
+.toggle-read:hover {
+    background-color: #e0a800;
+}
+
+.remove-book:hover {
+    background-color: #c82333;
+}
+
+/* --- Modal Styling --- */
 .modal {
     display: none;
     position: fixed;
-    top: 0;
+    z-index: 2;
     left: 0;
+    top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
 }
+
 .modal-content {
-    background: white;
-    padding: 20px;
-    margin: 15% auto;
-    width: 50%;
+    background-color: white;
+    margin: 10% auto;
+    padding: 2rem;
     border-radius: 8px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
+
 .close {
+    color: #aaa;
     float: right;
+    font-size: 28px;
+    font-weight: bold;
     cursor: pointer;
+}
+
+.close:hover {
+    color: black;
 }
