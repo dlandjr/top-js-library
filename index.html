@@ -8,7 +8,6 @@
 </head>
 <body>
     <div class="wrapper">
-
         <dialog id="newBookModal">
             <p class="modal-title">Create New Book Entry</p>
             <button id="exit">&times;</button> <!-- Can insert custom image for close button here-->
@@ -39,8 +38,20 @@
                 <button type="submit" id="submitBook">Submit</button>
             </form>
         </dialog>
+        <dialog id="bookDetailModal">
+            <button id="closeModal">&times;</button>
+            <div id="modalContent">
+                <h2 id="modalTitle"></h2>
+                <p><strong>Author:</strong> <span id="modalAuthor"></span></p>
+                <p><strong>Published:</strong> <span id="modalYearPub"></span></p>
+                <p><strong>Pages:</strong> <span id="modalPageNum"></span></p>
+                <p><strong>Description:</strong></p>
+                <p id="modalDescription"></p>
+            </div>
+        </dialog>
 
         <div class="nav">
+            <div class="title">Library</div>
             <div class="search">
                 <!--Add magnify or similar search icon here-->
                 <form id="searchForm" action="" method="post">
@@ -56,7 +67,6 @@
         </div>
 
         <div class="main-wrapper">
-            <p class="library-header">ODIN'S LIBRARY</p>
             <div id="cards"></div>
         </div>
     </div>

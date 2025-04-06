@@ -109,105 +109,65 @@ addBookToLibrary("The Pragmatic Programmer: From Journeyman to Master", "Dave Th
     false
 );
 
-// Create card structure and add card to grid //
 function addCard(bookObject) {
-    
-    // create card container
+    // Create the card container
     const card = document.createElement("div");
     card.classList.add("card");
     card.id = bookObject.id;
 
-    // create image element for cover
+    // Create the image element for the cover
     const cover = document.createElement("img");
     cover.src = bookObject.cover;
+    cover.alt = bookObject.title;
+    cover.classList.add("cover");
     card.appendChild(cover);
-    
-    // create container for content
-    const contentContainer = document.createElement("div");
-    contentContainer.classList.add("content");
 
-    // create container for top
-    const topContainer = document.createElement("div")
-    topContainer.classList.add("top");
-
-    // add title of book
-    const title = document.createElement("p");
-    title.classList.add("title");
-    title.textContent = bookObject.title;
-    console.log(title.textContent);
-    topContainer.appendChild(title);
-
-    // add author of book
-    const author = document.createElement("p");
-    author.classList.add("author");
-    author.textContent = bookObject.author;
-    console.log(author.textContent);
-    topContainer.appendChild(author);
-
-    // add book publication year
-    const yearPub = document.createElement("p");
-    yearPub.classList.add("yearPub");
-    yearPub.textContent = `Published in ${bookObject.yearPub}`;
-    console.log(yearPub.textContent);
-    topContainer.appendChild(yearPub);
-
-    // add page number
-    const pageNum = document.createElement("p");
-    pageNum.classList.add("pageNum");
-    pageNum.textContent = `${bookObject.pageNum} pages`;
-    console.log(pageNum.textContent);
-    topContainer.appendChild(pageNum);
-
-    // add divider line
-    const divider = document.createElement("hr");
-    console.log(divider);
-    topContainer.appendChild(divider);
-
-    // add top container to content
-    contentContainer.appendChild(topContainer);
-
-    // add bottom portion of card
+    // Create the bottom section of the card for book name and author
     const bottom = document.createElement("div");
     bottom.classList.add("bottom");
-    contentContainer.appendChild(bottom);
 
-    // create container for description
-    const descContainer = document.createElement("div");
-    descContainer.classList.add("description");
-    
-    // add book description
-    const description = document.createElement("div");
-    description.classList.add("description");
-    description.textContent = bookObject.description;
-    console.log(description.textContent);
-    descContainer.appendChild(description);
-    bottom.appendChild(descContainer);
+    // Title and author text at the bottom of the card
+    const title = document.createElement("p");
+    title.textContent = bookObject.title;
+    title.classList.add("book-title");
 
-    // add hashtag icon
-    
-    // add buttons container
-    const btns = document.createElement("div");
-    btns.classList.add("buttons");
+    const author = document.createElement("p");
+    author.textContent = bookObject.author;
+    author.classList.add("book-author");
 
-    // add read button
-    const read = document.createElement("button");
-    read.classList.add("read");
-    if (bookObject.read) {
-        read.textContent = "Read";
-    } else {
-        read.textContent = "Not Read"
-        read.style.color = "#dda15e";
-    }
-    btns.appendChild(read);
+    // Append title and author to the bottom
+    bottom.appendChild(title);
+    bottom.appendChild(author);
 
-    // add remove icon
+    // Append the bottom section to the card
+    card.appendChild(bottom);
 
-    // add card to the DOM
-    bottom.appendChild(btns);
-    contentContainer.appendChild(bottom);
-    card.appendChild(contentContainer);
+    // Add the card to the container
     cardsContainer.appendChild(card);
+
+    // Add event listener to open the modal with details when the card is clicked
+    card.addEventListener("click", () => openBookDetailModal(bookObject));
 }
+
+// Function to open the modal and show book details
+function openBookDetailModal(bookObject) {
+    const modal = document.getElementById("bookDetailModal");
+    document.getElementById("modalTitle").textContent = bookObject.title;
+    document.getElementById("modalAuthor").textContent = bookObject.author;
+    document.getElementById("modalYearPub").textContent = bookObject.yearPub;
+    document.getElementById("modalPageNum").textContent = bookObject.pageNum;
+    document.getElementById("modalDescription").textContent = bookObject.description;
+    
+    // Show the modal
+    modal.showModal();
+}
+
+// Event listener to close the modal when the close button is clicked
+document.getElementById("closeModal").addEventListener("click", () => {
+    const modal = document.getElementById("bookDetailModal");
+    modal.close();
+});
+
 
 // Validate form values
 function validateInfo(title, author, yearPub, pageNum, cover) {
