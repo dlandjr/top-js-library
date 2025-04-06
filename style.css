@@ -1,272 +1,375 @@
-/* General Page Styles */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
+* {
     margin: 0;
     padding: 0;
 }
 
-/* Header */
-header {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #2c3e50;
-    color: white;
-    padding: 15px;
+body {
+    display: flex;   
 }
 
-header h1 {
-    margin: 0;
-    flex: 1 1 100%;
-}
-
-header input,
-header select,
-header button {
-    padding: 8px;
-    margin-left: 10px;
-    border: none;
-    border-radius: 5px;
-}
-
-header input {
-    flex: 1;
-    max-width: 300px;
-}
-
-header select {
-    cursor: pointer;
-}
-
-header button {
-    background-color: #27ae60;
-    color: white;
-    cursor: pointer;
-}
-
-header button:hover {
-    background-color: #2ecc71;
-}
-
-/* Book Grid Layout */
-.library-container {
+.wrapper {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 15px;
-    padding: 20px;
-    width: 80%;  /* Adjusted to give more space */
-    margin: 20px auto; /* Center the container with spacing */
+    height: 100vh;
+    width: 100vw;
+    grid-template-columns: 260px auto;
+    grid-template-rows: 120px auto;
 }
 
-/* Book Card */
-.book-card {
-    background: white;
-    padding: 15px;
-    padding-bottom: 40px;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+
+/* ***************** */
+/* * MODAL STYLING * */
+/* ***************** */
+
+
+#newBookModal {
+    position: absolute;
+    margin: auto;
+    width: fit-content;
+    align-self: center;
+    z-index: 1;
+    width: 40%;
+    height: 66%;
+    padding: 0 40px 20px 40px;
+    overflow: auto;
+    border-radius: 25px;
+    overflow: hidden;
+}
+
+#newBookModal .modal-title{
+    font-family: "Squada One", sans-serif;
+    font-size: 30px;
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+
+#newBookModal input {
+    height: 22px;
+    border-radius: 6px;
+    border: none;
+    background-color: #e0e0e0;
+    margin-bottom: 10px;
+}
+
+#newBookModal textarea {
+    height: 60px;
+    border-radius: 6px;
+    border: none;
+    background-color: #e0e0e0;
+}
+
+#newBookModal form {
+    font-family: "Poppins", sans-serif;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    position: relative; /* For positioning the remove icon */
 }
 
-.book-card:hover {
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);  /* Prominent shadow on hover */
-    transform: scale(1.02); /* Slight zoom effect */
-}
-
-.book-card h3 {
-    margin: 0 0 5px;
-    color: #2c3e50;
-}
-
-.book-card p {
-    margin: 5px 0;
-}
-
-button.toggle-read {
-    background-color: #f39c12;
-    color: white;
+#exit {
+    position: absolute;
+    right: 8px;
+    top: 8px;
     border: none;
-    padding: 6px 12px;
-    margin-top: 10px;
+    background-color: transparent;
     cursor: pointer;
-    border-radius: 20px; /* More rounded button */
-    font-size: 0.9rem;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#exit img {
+    padding: 0;
+}
+
+input#read {
+    margin: 0;
+    scale: 1.2;
+    cursor: pointer;
+}
+
+div.checkbox {
     display: flex;
     align-items: center;
+    margin-top: 10px;
     gap: 8px;
 }
 
-button.toggle-read:hover {
-    background-color: #e67e22;
-    transform: scale(1.05); /* Slight grow effect on hover */
-}
-
-/* Remove Book X */
-.remove-book {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 24px;
-    color: #aaa;
-    cursor: pointer;
-}
-
-.remove-book:hover {
-    color: #e74c3c;
-}
-
-/* Modal */
-.modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    justify-content: center;
-    align-items: center;
-    z-index: 999;
-}
-
-.modal-content {
-    background: white;
-    padding: 25px; /* Increased padding */
-    border-radius: 15px; /* More rounded modal */
-    width: 300px;
-    position: relative;
-    text-align: left;
-}
-
-/* Close (X) Button */
-.close {
-    position: absolute;
-    right: 15px;
-    top: 10px;
-    cursor: pointer;
-    font-size: 24px;
-    color: #aaa;
-}
-
-.close:hover {
-    color: #000;
-}
-
-/* Form Inside Modal */
-form label {
-    display: block;
-    margin-bottom: 12px;
-    font-weight: bold;
-}
-
-form input[type="text"],
-form input[type="number"] {
-    width: 100%;
-    padding: 8px;
-    margin-top: 4px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-form input[type="checkbox"] {
-    margin-left: 10px;
-}
-
-form button[type="submit"] {
-    margin-top: 15px;
-    background-color: #27ae60;
-    color: white;
+#submitBook {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
     border: none;
-    padding: 10px 15px;
-    font-size: 1rem;
-    border-radius: 5px;
+    background-color: #e0e0e0;
+    border-radius: 15px;
+    padding: 10px;
+    width: 80px;
+    align-self: center;
     cursor: pointer;
 }
 
-form button[type="submit"]:hover {
-    background-color: #1e8449;
+
+
+/* ****************** */
+/* * NAVBAR STYLING * */
+/* ****************** */
+
+.nav {
+    display: flex;
+    padding-left: 30px;
+    align-items: center;
+    grid-column: 2 / 3;
+    margin-bottom: 30px;
 }
 
-/* Read Status */
-.read-status {
+.nav img {
+    width: 40px;
+}
+
+.nav .icons {
+    display: flex;
+    justify-items: flex-end;
+    margin-left: auto;
+    gap: 35px;
+    margin-right: 80px;
+}
+
+.nav > .search {
+    display: flex;
+    align-items: center;
+    margin-right: 110px;
+}
+
+input#search {
+    background-color: #e0e0e0;
+    border: none;
+    border-radius: 20px;
+    height: 28px;
+    width: 550px;
+    padding-left: 10px;
+}
+
+
+
+
+
+/* ******************* */
+/* * SIDEBAR STYLING * */
+/* ******************* */
+
+.sidebar-wrapper {
+    display: flex;
+    flex-direction: column;
+    background-color: #f7f7f7;
+    grid-row: 1 / 3;
+}
+
+.sidebar-wrapper #title, .title {
+    font-family: "Squada One", sans-serif;
+}
+
+.sidebar-wrapper #title {
+    display: flex;
+    font-size: 36px;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+}
+
+#title img {
+    width: 80px;
+}
+
+.btns {
+    display: flex;
+    flex-direction: column;
+    margin-top: 35px;
+}
+
+.btns li {
+    display: flex;
+    align-items: center;
+    padding-left: 30px;
+    list-style-type: none;
+    height: 70px;
+    margin-bottom: 15px;
+}
+
+.btns button {
+    display: flex;
+    align-items: center;
+    font-family: "Poppins", sans-serif;
+    font-size: 20px;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+}
+
+button > img {
+    width: 40px;
+    padding-right: 20px;
+}
+
+.highlight {
+    background-color: #606c3884;
+}
+
+.clicked {
+    filter: invert(1);
+}
+
+/* FOOTER STYLING */
+
+.sidebar-footer {
+    display: flex;
+    margin-top: auto;
+    border-top: 1.6px solid black;
+}
+
+.sidebar-footer .user {
+    display: flex;
+    align-items: center;
+    font-family: "Squada One", sans-serif;
+    font-size: 28px;
+    padding: 10px;
+}
+
+.sidebar-footer .user img {
+    scale: 1.8;
+    padding: 0 15px 0 15px;
+}
+
+.sidebar-footer .icons {
+    display: flex;
+    scale: .6;
+    gap: 10px;
+    margin-left: 50px;
+}
+
+
+/* **************** */
+/* * MAIN STYLING * */
+/* *****************/
+
+.main-wrapper {
+    display: grid;
+    grid-area: 2 / 2 / 3 / 3;
+    grid-template-rows: 60px auto;
+    overflow-y: hidden;
+}
+
+p.library-header {
+    font-family: "Squada One", sans-serif;
+    font-size: 40px;
+    padding-left: 40px;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.159);
+}
+
+
+/* CARD STYLING */
+
+#cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 24px;
+    padding: 25px 30px 30px 40px;
+    overflow-y: scroll;
+}
+
+
+.card {
+    display: flex;
+    background-color: #f7f7f7;
+    border-radius: 18px;
+    border-right: 10px solid #606c38;
+    padding-left: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.359);
+}
+
+
+.content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.top {
+    flex-grow: 1;
+    padding-top: 16px;
+    padding-left: 10px;
+    padding-right: 25px;
+
+}
+
+
+/* CONTENT STYLING */
+
+.card p.title {
+    font-size: 28px;
+}
+
+.card p.author, p.description {
+    font-family: "Poppins", sans-serif;
+}
+
+.card p.description {
+    font-size: 14px;
+}
+
+div.description {
+    height: 150px;
+    overflow-y: auto;
+}
+
+hr {
+    margin: 0 110px 0 0;
+}
+
+.card img {
+    width: 170px;
+    scale: .88;
+    border-radius: 15px;
+}
+
+
+/* CARD BOTTOM STYLING */
+
+.bottom {
+    font-family: "Poppins", sans-serif;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 16px;
+    padding-left: 10px;
+
+}
+
+.bottom button {
+    font-family: "Poppins", sans-serif;
+    font-size: 16px;
+    font-weight: 450;
+    color: #606c38;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.bottom .pageNum {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.bottom .pageNum img {
+    width: 25px;
+    padding: 0;
+    border: 2px solid black;
+    border-radius: 3px;
+    scale: 0.8;
+}
+
+.bottom button img {
+    width: 30px;
+}
+
+.bottom .buttons {
     display: flex;
     align-items: center;
     gap: 10px;
-    font-size: 0.9rem;
-    font-weight: bold;
-}
-
-.read-label {
-    color: #e74c3c; /* Default: Red for Unread */
-    transition: color 0.3s ease;
-}
-
-/* Toggle Switch Container */
-.switch {
-    position: relative;
-    display: inline-block;
-    width: 34px;
-    height: 20px;
-}
-
-/* Hide the default checkbox */
-.switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-}
-
-/* Slider (Toggle Button) */
-.slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #e74c3c; /* Default: Red for Unread */
-    transition: 0.3s;
-    border-radius: 34px;
-}
-
-.slider:before {
-    position: absolute;
-    content: "";
-    height: 14px;
-    width: 14px;
-    left: 3px;
-    bottom: 3px;
-    background-color: white;
-    transition: 0.3s;
-    border-radius: 50%;
-}
-
-/* When checked, change background to green */
-input:checked + .slider {
-    background-color: #2ecc71;
-}
-
-/* Move the toggle circle when checked */
-input:checked + .slider:before {
-    transform: translateX(14px);
-}
-
-/* Responsive Design */
-@media screen and (max-width: 600px) {
-    .library-container {
-        width: 100%; /* Full width on small screens */
-    }
-    .book-card h3 {
-        font-size: 1.1rem; /* Smaller title font size */
-    }
-    .toggle-read {
-        font-size: 0.75rem; /* Smaller buttons on mobile */
-    }
+    margin-left: auto;
 }
