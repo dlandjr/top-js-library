@@ -228,7 +228,6 @@ function displayBooks (str = "") {
 
     if (str === "read") {
         const readBooks = myLibrary.filter(book => book.read === true);
-        for(const book of readBooks) {
             addCard(book);
         }
     } else if (str === "unread") {

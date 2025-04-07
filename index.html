@@ -48,25 +48,34 @@
                 <p><strong>Description:</strong></p>
                 <p id="modalDescription"></p>
             </div>
-        </dialog>
-
-        <div class="nav">
-            <div class="title">Library</div>
-            <div class="search">
-                <!--Add magnify or similar search icon here-->
-                <form id="searchForm" action="" method="post">
-                    <input type="text" id="search" name="search" placeholder="Search">
-                </form>
+        </dialog>        
+        
+        <header class="header">
+            <div class="left-header">
+                <h1 class="title">My Library</h1>
+                <div class="search">
+                    <form id="searchForm" action="" method="post">
+                        <button type="submit" id="searchIcon">
+                            <img src="search-icon.png" alt="Search"> <!-- Add a search icon here -->
+                        </button>
+                        <input type="text" id="search" name="search" placeholder="Search">
+                    </form>
+                </div>
+                <select id="filterStatus" class="filter-dropdown">
+                    <option value="all">All</option>
+                    <option value="read">Read</option>
+                    <option value="unread">Unread</option>
+                </select>
+                <button id="addBookBtn" class="add-book-btn">Add Book</button>
             </div>
-            <button id="addBookBtn" class="add-book-btn">Add Book</button>
-            <select id="filterStatus" class="filter-dropdown">
-                <option value="all">All</option>
-                <option value="read">Read</option>
-                <option value="unread">Unread</option>
-            </select>
-        </div>
+            <div class="right-header">
+                <a href="https://github.com/yourusername/yourrepo" target="_blank">
+                    <img src="github-icon.png" alt="GitHub" class="github-icon"> <!-- Add GitHub icon here -->
+                </a>
+            </div>
+        </header>
 
-        <div class="main-wrapper">
+        <div class="main-content">
             <div id="cards"></div>
         </div>
     </div>
