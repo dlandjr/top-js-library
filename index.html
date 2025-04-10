@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 </head>
 <body>
     <div class="wrapper">
@@ -51,28 +52,23 @@
         </dialog>        
         
         <header class="header">
-            <div class="left-header">
-                <h1 class="title">My Library</h1>
-                <div class="search">
-                    <form id="searchForm" action="" method="post">
-                        <button type="submit" id="searchIcon">
-                            <img src="search-icon.png" alt="Search"> <!-- Add a search icon here -->
-                        </button>
-                        <input type="text" id="search" name="search" placeholder="Search">
-                    </form>
-                </div>
-                <select id="filterStatus" class="filter-dropdown">
-                    <option value="all">All</option>
-                    <option value="read">Read</option>
-                    <option value="unread">Unread</option>
-                </select>
-                <button id="addBookBtn" class="add-book-btn">Add Book</button>
-            </div>
-            <div class="right-header">
-                <a href="https://github.com/yourusername/yourrepo" target="_blank">
-                    <img src="github-icon.png" alt="GitHub" class="github-icon"> <!-- Add GitHub icon here -->
-                </a>
-            </div>
+            <a href="https://github.com/dlandjr" target="_blank" class ="github-icon">
+            <i class="fab fa-github"></i></a>
+            <h1 class="title">My Library</h1>
+            <search>
+                <form action="#" method="get" class="search">
+                    <label for="search">
+                        <span class="icon icon-search"></span>
+                    </label>
+                    <input type="search" id="search" name="search" placeholder="Search"/>
+                </form>
+            </search>
+            <select id="filterStatus" class="filter-dropdown">
+                <option value="all">All</option>
+                 <option value="read">Read</option>
+                <option value="unread">Unread</option>
+            </select>
+            <button id="addBookBtn" class="add-book-btn">Add Book</button>
         </header>
 
         <div class="main-content">
