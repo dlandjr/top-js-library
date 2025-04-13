@@ -6,15 +6,42 @@
     <title>Library</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <script type="module" src="./js/index.js" defer></script>
 </head>
 <body>
+
+    <header class="header">
+        <a href="https://github.com/dlandjr" target="_blank" class ="github-icon">
+        <i class="fab fa-github"></i></a>
+        <h1 class="title">My Library</h1>
+        <search>
+            <form action="#" method="get" class="search">
+                <label for="search">
+                    <span class="icon icon-search"></span>
+                </label>
+                <input type="search" id="search" name="search" placeholder="Search"/>
+            </form>
+        </search>
+        <select id="filterStatus" class="filter-dropdown">
+            <option value="all">All</option>
+            <option value="read">Read</option>
+            <option value="unread">Unread</option>
+        </select>
+        <button class="add-book">
+            <svg xm1ns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <title>plus</title>
+                <path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" />
+            </svg>
+            Add Book
+        </button>
+    </header>
+
     <div class="new-book-container" data-overlay-container="false">
         <div class="new-book-wrapper">
-            <p class="new-book-title">Add New Book</p>
+            <p class="add-book-title">Add New Book</p>
             <div class="line"></div> <!-- is there a better way to do this? -->
             <div class="new-book-section">
-
-                <div class="new-book-section">
+                <div class="new-book">
                     <div class="form-group title-group">
                         <label for="book-title">Book Title <span>(required)</span></label>
                         <input type="text" id="book-title" placeholder="Enter book title" maxlength="100" class="new-book-title" data-is-valid="none">
@@ -33,7 +60,7 @@
                     </div>
                     <div class="form-group description-group">
                         <label for="book-description">Description <span>(optional)</span></label>
-                        <textarea id="book-description" placeholder="Book description" maxlength="250" class="new-book-description" data-is-valid="none"></textarea>
+                        <textarea id="book-description" placeholder="Book description" maxlength="500" class="new-book-description" data-is-valid="none"></textarea>
                     </div>
                     <div class="form-group cover-group">
                         <label for="book-cover">Cover Image URL <span>(optional)</span></label>
@@ -47,111 +74,38 @@
                 </div>
             </div>
         </div>
-
-        <dialog 
-            id="bookDetailsDialog" 
-            class="book-details-dialog" 
-            aria-labelledby="bookDetailsDialogTitle"
-            aria-modal="true">
-
-            <div class="book-details-dialog__wrapper">
-                <div class="book-details-dialog__actions">
-                    <button id="closeDialog" class="close-button-dialog">
-                        <svg xm1ns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                            <line x1="6" y1="6" x2="18" y2="18" stroke="#000000" stroke-width="2" stroke-linecap="butt"/>
-                            <line x1="6" y1="6" x2="18" y2="18" stroke="#000000" stroke-width="2" stroke-linecap="butt"/>
-                        </svg>
-                    </button>
-                </div>
-                <div class="book-details-dialog__content">
-                    <h2 id="bookDetailsDialogTitle" class="book-details-dialog__title"></p>
-                    <div class="book-details-dialog__info">
-                        <p id="bookAuthorDialog" class="book-details-dialog__author"></p>
-                        <p id="bookYearDialog" class="book-details-dialog__year"></p>
-                    </div>
-
-                    <div class="book-details-dialog__description-section">
-                        <p class="book-details-dialog__subtitle">Description</p>
-                        <div id="descriptionDisplay" class="book-details-dialog__description-display">
-                            <p id="currentDescription" class="book-details-dialog__current-description"></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </dialog>
-
     </div>
 
-    <!-- old modal code-->
-    <div class="wrapper">
-        <dialog id="newBookModal">
-            <p class="modal-title">Create New Book Entry</p>
-            <button id="exit">&times;</button> <!-- Can insert custom image for close button here-->
-            <form id="bookEntry" action="" method="post">
-                <label for="title">*Title</label>
-                <input type="text" id="title" name="title" required>
+    <dialog 
+        id="bookDetailsDialog" 
+        class="book-details-dialog" 
+        aria-labelledby="bookDetailsDialogTitle"
+        aria-modal="true">
 
-                <label for="author">*Author</label>
-                <input type="text" id="author" name="author" required>
-
-                <label for="yearPub">*Publication Year</label>
-                <input type="number" id="yearPub" name="yearPub" required>
-
-                <label for="pageNum">*Number of Pages</label>
-                <input type="number" id="pageNum" name="pageNum" required>
-
-                <label for="cover">*Cover URL</label>
-                <input type="url" id="cover" name="cover" required>
-
-                <label for="description">*Description</label>
-                <textarea name="description" id="description" required></textarea>
-                
-                <div class="checkbox">
-                    <label for="read">Read?</label>
-                    <input type="checkbox" id="read" name="read">
+        <div class="book-details-dialog__wrapper">
+            <div class="book-details-dialog__actions">
+                <button id="closeDialog" class="close-button-dialog">
+                    <svg xm1ns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                        <line x1="6" y1="6" x2="18" y2="18" stroke="#000000" stroke-width="2" stroke-linecap="butt"/>
+                        <line x1="6" y1="6" x2="18" y2="18" stroke="#000000" stroke-width="2" stroke-linecap="butt"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="book-details-dialog__content">
+                <h2 id="bookDetailsDialogTitle" class="book-details-dialog__title"></p>
+                <div class="book-details-dialog__info">
+                    <p id="bookAuthorDialog" class="book-details-dialog__author"></p>
+                    <p id="bookYearDialog" class="book-details-dialog__year"></p>
                 </div>
 
-                <button type="submit" id="submitBook">Submit</button>
-            </form>
-        </dialog>
-
-        <dialog id="bookDetailModal">
-            <button id="closeModal">&times;</button>
-            <div id="modalContent">
-                <h2 id="modalTitle"></h2>
-                <p><strong>Author:</strong> <span id="modalAuthor"></span></p>
-                <p><strong>Published:</strong> <span id="modalYearPub"></span></p>
-                <p><strong>Pages:</strong> <span id="modalPageNum"></span></p>
-                <p><strong>Description:</strong></p>
-                <p id="modalDescription"></p>
+                <div class="book-details-dialog__description-section">
+                    <p class="book-details-dialog__subtitle">Description</p>
+                    <div id="descriptionDisplay" class="book-details-dialog__description-display">
+                        <p id="currentDescription" class="book-details-dialog__current-description"></p>
+                    </div>
+                </div>
             </div>
-        </dialog>        
-        
-        <header class="header">
-            <a href="https://github.com/dlandjr" target="_blank" class ="github-icon">
-            <i class="fab fa-github"></i></a>
-            <h1 class="title">My Library</h1>
-            <search>
-                <form action="#" method="get" class="search">
-                    <label for="search">
-                        <span class="icon icon-search"></span>
-                    </label>
-                    <input type="search" id="search" name="search" placeholder="Search"/>
-                </form>
-            </search>
-            <select id="filterStatus" class="filter-dropdown">
-                <option value="all">All</option>
-                 <option value="read">Read</option>
-                <option value="unread">Unread</option>
-            </select>
-            <button id="addBookBtn" class="add-book-btn">Add Book</button>
-        </header>
-
-        <div class="main-content">
-            <div id="cards"></div>
         </div>
-    </div>
-
-    <script src="script.js"></script>
+    </dialog>      
 </body>
 </html>

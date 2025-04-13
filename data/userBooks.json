@@ -1,0 +1,55 @@
+[
+    {
+        "id":1,
+        "title":"East of Eden",
+        "author":"John Steinbeck",
+        "year":1952,
+        "pages": 608,
+        "description": "East of Eden is a powerful novel by John Steinbeck that explores the intertwined destinies of two families, the Trasks and the Hamiltons, set in California's Salinas Valley. The story, echoing the Biblical tale of Adam and Eve, follows Adam Trask and his troubled sons, Cal and Aaron, as they struggle with identity, love, and the dark rivalry between them. A modern retelling of the Book of Genesis, Steinbeck's 1952 masterpiece delves into themes of family, love, and the consequences of its absence.",
+        "cover":"https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1639969375i/4406.jpg"
+    },
+    {
+        "id":2,
+        "title":"Lonesome Dove",
+        "author":"Larry McMurtry",
+        "year":1985,
+        "pages":864,
+        "description":"Lonesome Dove is a Pulitzer Prize-winning epic set in the rugged Texas town of Lonesome Dove. Through unforgettable characters—heroes, outlaws, settlers, and Indians—Larry McMurtry weaves a poignant love story and thrilling adventure. Richly authentic and beautifully  written, the novel explores the harsh beauty of the American frontier, capturing moments that will make readers laugh, weep, and  remember long after the last page.",
+        "cover":"https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1559668037i/256008.jpg"
+    },
+    {
+        "id":3,
+        "title":"The Brothers K",
+        "author":"David James Duncan",
+        "year":1992,
+        "pages":645,
+        "description":"The Brothers K is a sweeping, multi-layered novel by David James Duncan, blending family drama, baseball, politics, and religion. Narrated by Kincaid Chance, the youngest son in a troubled family, it explores the complexities of growing up with a discouraged father  and a fanatical mother. Set against the backdrop of the Eisenhower years through the Vietnam War, the novel is both humorous and heartbreaking, offering a richly inventive narrative that captivates with its depth and emotional power.",
+        "cover":"https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1403176622i/19534.jpg"
+    },
+    {
+        "id":4,
+        "title":"Barbarian Days: A Surfing Life",
+        "author":"William Finnegan",
+        "year":2015,
+        "pages":447,
+        "description":"Barbarian Days is William Finnegan's memoir of a lifelong obsession with surfing—a pursuit that becomes a way of life. From his youth in California and Hawaii to travels across the South Pacific, Australia, Asia, and Africa, Finnegan explores waves, friendship, and growth. Blending adventure, introspection, and cultural insight, his story captures the spirit of surfing and the restless energy of youth.",
+        "cover":"https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1418768620i/18693910.jpg"
+    },{
+        "id":5,
+        "title":"The Boys in the Boat: Nine Americans and Their Epic Quest for Gold at the 1936 Berlin Olympics",
+        "author":"Daniel James Brown",
+        "year":2013,
+        "pages":404,
+        "description":"The Boys in the Boat tells the inspiring true story of nine working-class boys from the University of Washington who overcame the odds to win gold at the 1936 Berlin Olympics. Central to the story is Joe Rantz, a teen without family or direction, who finds purpose through rowing. Daniel James Brown draws on personal accounts to craft a powerful tale of perseverance, teamwork, and triumph against elite rivals and Nazi Germany.",
+        "cover":"https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1354683116i/16158542.jpg"
+    },
+    {
+        "id":6,
+        "title":"The Pragmatic Programmer: From Journeyman to Master",
+        "author":"Dave Thomas",
+        "year":1999,
+        "pages":321,
+        "description":"The Pragmatic Programmer is essential reading for software developers, offering practical advice on writing high-quality, maintainable code. It emphasizes personal responsibility, career growth, and adaptable design while covering topics like avoiding software rot and effective testing. With engaging anecdotes and tips, it helps developers of all levels boost productivity and satisfaction, building habits for long-term success in a programming career.",
+        "cover":"https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1401432508i/4099.jpg"
+    }
+]

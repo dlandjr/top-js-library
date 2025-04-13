@@ -40,6 +40,7 @@ export const validatorYear = function () {
     }
 
     yearInput.reportValidity();
+    return false;
 };
 
 const titleGroup = newBook.querySelector('.title-group');
@@ -55,11 +56,6 @@ export const validatorTitle = function () {
     } else if (title.length > 100) {
         titleInput.setCustomValidity('The max is 100 characters');
         validator(isValidTitle, false);
-
-        setTimeout(() => {
-            titleInput.setCustomValidity('');
-            validator(isValidTitle, true);
-        }, 1000);
     } else {
         titleInput.setCustomValidity('');
         validator(isValidTitle, true);
@@ -67,6 +63,7 @@ export const validatorTitle = function () {
     }
 
     titleInput.reportValidity();
+    return false;
 };
 
 const authorGroup = newBook.querySelector('.author-group');
@@ -82,11 +79,6 @@ export const validatorAuthor = function () {
     } else if (author.length > 50) {
         authorInput.setCustomValidity('The max is 50 characters');
         validator(isValidAuthor, false);
-        
-        setTimeout(() => {
-            authorInput.setCustomValidity('');
-            validator(isValidAuthor, true);
-        }, 1000);
     } else { 
         authorInput.setCustomValidity('');
         validator(isValidAuthor, true);
@@ -94,6 +86,7 @@ export const validatorAuthor = function () {
     }
 
     authorInput.reportValidity();
+    return false;
 };
 
 const descriptionGroup = newBook.querySelector('.description-group');
@@ -106,14 +99,9 @@ export const validatorDescription = function () {
     if (description === '') {
         descriptionInput.setCustomValidity('Please enter a description:');
         validator(isValidDescription, false);
-    } else if (description.length > 250) {
-        descriptionInput.setCustomValidity('The max is 250 characters');
+    } else if (description.length > 500) {
+        descriptionInput.setCustomValidity('The max is 500 characters');
         validator(isValidDescription, false);
-
-        setTimeout(() => {
-            descriptionInput.setCustomValidity('');
-            validator(isValidDescription, true);
-        }, 1000);
     } else {
         descriptionInput.setCustomValidity('');
         validator(isValidDescription, true);
@@ -121,6 +109,7 @@ export const validatorDescription = function () {
     }
 
     descriptionInput.reportValidity();
+    return false;
 }
 
 const coverGroup = newBook.querySelector('.cover-group');
@@ -144,31 +133,26 @@ export const validatorCover = function () {
     }
 
     coverInput.reportValidity();
+    return false;
 };
 
 const submissionHandler = function () {
-    const cacheValidator = {
-        all: function () {
-            validatorTitle();
-            validatorAuthor();
-            validatorYear();
-        }
-    };
+    const isTitleValid = validatorTitle();
+    const isAuthorValid = validatorAuthor();
+    const isYearValid = validatorYear();
+    const isDescriptionValid = validatorDescription();
+    const isCoverValid = validatorCover();
 
-    cacheValidator.all();
+    return (
+        isTitleValid &&
+        isAuthorValid &&
+        isYearValid &&
+        isDescriptionValid &&
+        isCoverValid
+    );
 };
 
-export const validatorSubmission = function (title, author, year) {
-    let isTitleMissing = !title?.trim();
-    let isAuthorMissing = !author?.trim();
-    let isYearMissing = !year?.trim();
-
-    submissionHandler(isTitleMissing, isAuthorMissing, isYearMissing);
-
-    return isTitleMissing || isAuthorMissing || isYearMissing;
-};
-
-const resetValidate = function (isValid) {
+const resetValidationIndicator = function (isValid) {
     isValid.setAttribute('data-is-valid', 'none');
 };
 
@@ -185,11 +169,11 @@ export const resetInput = function () {
     descriptionInput.setCustomValidity('');
     coverInput.setCustomValidity('');
 
-    resetValidate(isValidTitle);
-    resetValidate(isValidAuthor);
-    resetValidate(isValidYear);
-    resetValidate(isValidDescription);
-    resetValidate(isValidCover);
+    resetValidationIndicator(isValidTitle);
+    resetValidationIndicator(isValidAuthor);
+    resetValidationIndicator(isValidYear);
+    resetValidationIndicator(isValidDescription);
+    resetValidationIndicator(isValidCover);
 
     titleInput.focus();
 };
